@@ -1,0 +1,61 @@
+.Cmp3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10rem;
+  padding-right: 15rem;
+  padding-left: 15rem;
+  grid-gap: 5rem;
+}
+.Cmp3 h2 {
+  font-size: 4rem;
+  color: #3b90fb;
+  display: flex;
+  justify-content: center;
+}
+
+.content5 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 70rem;
+  grid-gap: 1.5rem;
+}
+.content5 h2 {
+  font-size: 4rem;
+  font-weight: 400;
+  color: black;
+}
+.content5 div p {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3b90fb;
+}
+.content5 p {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.content6 {
+  display: flex;
+  grid-gap: 3rem;
+}
+.content6 img {
+  width: 100rem;
+  height: 50rem;
+  border-radius: 2.5rem;
+}
+
+.Link {
+  width: 24rem;
+  height: 6rem;
+  border: none;
+  background-color: #f59c33;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

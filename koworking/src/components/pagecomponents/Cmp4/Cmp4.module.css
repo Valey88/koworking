@@ -1,0 +1,21 @@
+.Cmp4 {
+  width: 100%;
+  padding: 30rem 15rem 0 15rem;
+}
+.contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contents div {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 2rem;
+}
+.contents div h3 {
+  color: #3b90fb;
+  font-size: 4rem;
+}
+.contents div p {
+  font-size: 2rem;
+}

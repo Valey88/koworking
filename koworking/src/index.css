@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: calc(100vw / 1920 * 10);
+}
+@media (max-width: 1024px) {
+  :root {
+    font-size: calc(100vw / 768 * 10);
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    font-size: calc(100vw / 500 * 10);
+  }
+}
+@media (max-width: 500px) {
+  :root {
+    font-size: calc(100vw / 360 * 10);
+  }
+}
+
+button {
+  width: 24rem;
+  height: 6rem;
+  border: none;
+  background-color: #f59c33;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+}
+
+@font-face {
+  font-family: "inter";
+  src: url("/public/TT_Interphases_Pro/TT_Interphases_Pro_Trial_Regular.ttf");
+}
+
+body {
+  font-family: "TT_Interphases_Pro" serif;
+}

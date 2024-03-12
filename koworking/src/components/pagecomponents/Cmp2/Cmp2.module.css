@@ -1,0 +1,43 @@
+.Cmp2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 15rem;
+  padding-left: 15rem;
+  padding-top: 20rem;
+}
+.cmpContent div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5rem;
+  padding-top: 3rem;
+}
+.cmpContent h2 {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cmpContent p {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  color: #3b90fb;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+}
+.contents h3 {
+  font-size: 3rem;
+}
+.contents p {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
