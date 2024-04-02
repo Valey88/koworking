@@ -1,0 +1,12 @@
+.Admin {
+  width: 100%;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 5rem;
+}
+
+.allRooms {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10rem;
+}

@@ -6,7 +6,7 @@ const Footer = () => {
     <div className={style.footer}>
       <div className={style.footerContent}>
         <Link to="/" className={style.logo}>
-          ОрГМУ
+          ОРГМУ
         </Link>
       </div>
       {/* <div className={style.footerContent}>

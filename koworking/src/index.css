@@ -30,6 +30,9 @@ html {
     font-size: calc(100vw / 360 * 10);
   }
 }
+ul {
+  list-style: none;
+}
 
 button {
   width: 24rem;
@@ -41,11 +44,33 @@ button {
   font-size: 2rem;
 }
 
-@font-face {
-  font-family: "inter";
-  src: url("/public/TT_Interphases_Pro/TT_Interphases_Pro_Trial_Regular.ttf");
+body {
+  font-family: "inter" serif;
+  background-color: #fff;
 }
 
-body {
-  font-family: "TT_Interphases_Pro" serif;
+/* input {
+  border: none;
+  width: 40rem;
+  height: 4rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 2.5rem;
+  padding: 0.5rem;
+  border: 0.3rem solid #f59c33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* textarea {
+  background-color: grey;
+} */
+
+.my-slider {
+  width: 50rem;
+}
+.slider-wrapper {
+  width: 50rem;
+  height: 50rem;
 }

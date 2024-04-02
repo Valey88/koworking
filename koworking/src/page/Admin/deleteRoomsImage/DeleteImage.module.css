@@ -1,0 +1,18 @@
+.DeleteImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.images {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 20px;
+}
