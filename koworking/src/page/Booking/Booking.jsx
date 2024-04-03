@@ -21,7 +21,7 @@ import {
   Keyboard,
 } from "swiper/modules";
 
-const Booking = ({ handleOpen, handleClose }) => {
+const Booking = () => {
   const { data } = useGetRoomsQuery();
   console.log(data);
   return (
@@ -68,24 +68,12 @@ const Booking = ({ handleOpen, handleClose }) => {
                 <p>Количество мест {data.places}</p>
                 <p>Цена {data.price}р</p>
                 <div>
-                  <button onClick={handleOpen}>Забронировать</button>
-                  <Modal id = {data.id}/>
+                  <Modal id={data.id} />
                 </div>
               </div>
             </div>
           );
         })}
-      </div>
-      <div>
-        <input
-          type="datetime-local"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <input type="text" placeholder="Количество часов" />
-        <input type="text" placeholder="Количество минут" />
-        <textarea placeholder="Краткое описание события" />
-        <input type="text" placeholder="Количество человек" />
-        <button>Отправить</button>
       </div>
     </div>
   );

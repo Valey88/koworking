@@ -5,19 +5,33 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { usePostOrdersMutation } from "../../../redux/dataApi";
+import styles from "./Modal.module.css";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
-  height: 600,
+  width: "600px",
+  height: "600px",
   bgcolor: "background.paper",
   border: "none",
   borderRadius: "20px",
   boxShadow: 24,
   p: 4,
+  width: {
+    "@media (max-width: 500px)": {
+      width: "350px",
+    },
+    "@media (max-width: 2000px)": {
+      width: "450px",
+    },
+  },
+  height: {
+    "@media (max-width: 500px)": {
+      height: "800px",
+    },
+  },
 };
 
 export default function BasicModal({ id }) {
@@ -82,7 +96,9 @@ export default function BasicModal({ id }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <button className={styles.modalButton} onClick={handleOpen}>
+        Забронировать
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -91,43 +107,54 @@ export default function BasicModal({ id }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            <input
-              type="datetime-local"
-              onChange={(e) => setTimeStart(e.target.value)}
-            />
-            <h2>Продолжительность события</h2>
-            <input
-              type="text"
-              placeholder="Количество часов"
-              onChange={(e) => setDurationHours(+e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Количество минут"
-              onChange={(e) => setDurationMinuts(+e.target.value)}
-            />
-            <textarea
-              placeholder="Краткое описание события"
-              onChange={(e) => setSummaryEvent(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="ФИО"
-              onChange={(e) => setFio(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Номер телефона"
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <button onClick={addNewOrder}>Отправить</button>
+            <div className={styles.modalContainer}>
+              <input
+                className={styles.modalInput}
+                type="datetime-local"
+                onChange={(e) => setTimeStart(e.target.value)}
+              />
+              <h2>Продолжительность события</h2>
+              <input
+                className={styles.modalInput}
+                type="text"
+                placeholder="Количество часов"
+                onChange={(e) => setDurationHours(+e.target.value)}
+              />
+              <input
+                className={styles.modalInput}
+                defaultValue="00"
+                type="text"
+                placeholder="Количество минут"
+                onChange={(e) => setDurationMinuts(+e.target.value)}
+              />
+              <textarea
+                className={styles.modalTextarea}
+                placeholder="Краткое описание события"
+                onChange={(e) => setSummaryEvent(e.target.value)}
+              />
+              <input
+                className={styles.modalInput}
+                type="text"
+                placeholder="ФИО"
+                onChange={(e) => setFio(e.target.value)}
+              />
+              <input
+                className={styles.modalInput}
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                className={styles.modalInput}
+                type="text"
+                placeholder="Номер телефона"
+                defaultValue="+7"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              <button className={styles.modalButton} onClick={addNewOrder}>
+                Отправить
+              </button>
+            </div>
           </Typography>
         </Box>
       </Modal>
