@@ -11,30 +11,55 @@ const CreateRooms = () => {
   const [price, setPrice] = useState(0);
   const [places, setPlaces] = useState(0);
   const [addRooms, { isError }] = useAddRoomsMutation();
-
+  const [weeks, setWeeks] = useState([]);
+  const [timeStart, setTimeStart] = useState("");
+  const [timeEnd, setTimesEnd] = useState("");
 
   const addNewRoom = async () => {
-    console.log({ address, name, description, price, places });
-    if (address && name && description && price && places) {
+    console.log({
+      address,
+      name,
+      description,
+      price,
+      places,
+      timeStart,
+      timeEnd,
+      weeks,
+    });
+    if (
+      address &&
+      name &&
+      description &&
+      price &&
+      places &&
+      timeStart &&
+      timeEnd &&
+      weeks
+    ) {
       await addRooms({
         address,
         name,
         description,
         price,
         places,
+        timeStart,
+        timeEnd,
+        weeks,
       }).unwrap();
       setAddress("");
       setName("");
       setDescription("");
       setPrice("");
       setPlaces("");
+      setWeeks([]);
+      setTimeStart("");
+      setTimesEnd("");
     }
   };
 
   return (
-    
     <div className={style.CreateRooms}>
-        <SideBar />
+      <SideBar />
       <div className={style.AddRoomsHead}>
         <h1>Создание комнаты</h1>
       </div>
@@ -68,6 +93,25 @@ const CreateRooms = () => {
             type="text"
             placeholder="Количество мест"
             onChange={(e) => setPlaces(+e.target.value)}
+            className={style.inputAddRooms}
+          />
+          <input
+            type="text"
+            placeholder="дни недели работы"
+            value={["Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]}
+            onChange={(e) => setWeeks(e.target.value)}
+            className={style.inputAddRooms}
+          />
+          <input
+            type="text"
+            placeholder="Начало работы"
+            onChange={(e) => setTimeStart(e.target.value)}
+            className={style.inputAddRooms}
+          />
+          <input
+            type="text"
+            placeholder="Конец работы"
+            onChange={(e) => setTimesEnd(e.target.value)}
             className={style.inputAddRooms}
           />
           <button onClick={addNewRoom}>Создать</button>

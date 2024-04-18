@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   useGetRoomsQuery,
   useDeleteRoomMutation,
+  useGetOrdersQuery,
   // useGetPicturesQuery,
   // useGetPicturesNameQuery,
 } from "../../redux/dataApi";
@@ -24,7 +25,7 @@ function AddRooms() {
   const [file, setFile] = useState(null);
   const { data } = useGetRoomsQuery();
   const [deleteRoom] = useDeleteRoomMutation();
-  console.log(data);
+  const { data: orders } = useGetOrdersQuery();
   const deleteRooms = async (id) => {
     await deleteRoom(id).unwrap();
   };
@@ -51,49 +52,58 @@ function AddRooms() {
           <h1>Список комнат</h1>
           {data?.map((data) => {
             return (
-              <div key={data.id}>
-                <Swiper
-                  slidesPerView={1}
-                  spaceBetween={30}
-                  loop={true}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  navigation={true}
-                  modules={[Pagination, Navigation]}
-                  className="mySwiper"
-                >
-                  {data?.picture?.map((img) => {
-                    const imgBlob = new Blob([img.data]);
-                    return (
-                      <SwiperSlide key={img.id}>
-                        <img src={`http://localhost:3000/${img.name}`} />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-                <h2>{data.address}</h2>
-                <h2>{data.name}</h2>
-                <h2>{data.description}</h2>
-                <h2>Количество мест {data.places}</h2>
-                <h2>Цена {data.price}р</h2>
-                {/* 
-                {data?.picture?.map((img) => {
-                  const imgBlob = new Blob([img.data]);
-                  return (
-                    <div className={style.images}>
-                      <img src={`http://localhost:3000/${img.name}`} />
-                    </div>
-                  );
-                })} */}
+              <div className={style.Rooms} key={data.id}>
+                <div className={style.roomSwiper}>
+                  <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    loop={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper"
+                  >
+                    {data?.picture?.map((img) => {
+                      const imgBlob = new Blob([img.data]);
+                      return (
+                        <SwiperSlide key={img.id}>
+                          <img src={`http://localhost:3000/${img.name}`} />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </div>
+                <div className={style.roomInfo}>
+                  <div>
+                    <p>Адрес:</p>
+                    <h2>{data.address}</h2>
+                  </div>
 
-                <input type="file" onChange={uploadFile} name="inputFile" />
-                <button onClick={(e) => handleFileChanges(data.id)}>
-                  Загрузить
-                </button>
-                <div>
-                  <h2>Удалить комнату</h2>
-                  <button onClick={(e) => deleteRooms(data.id)}>Удалить</button>
+                  <div>
+                    <p>Название:</p>
+                    <h2>{data.name}</h2>
+                  </div>
+                  <div>
+                    <p>Описание:</p>
+                    <h2>{data.description}</h2>
+                  </div>
+                  <h2>Количество мест {data.places}</h2>
+                  <h2>Цена {data.price}р</h2>
+                  <div className={style.uploads}>
+                    <h2>Загрузить фото:</h2>
+                    <input type="file" onChange={uploadFile} name="inputFile" />
+                    <button onClick={(e) => handleFileChanges(data.id)}>
+                      Загрузить
+                    </button>
+                  </div>
+                  <div className={style.deleteRoom}>
+                    <h2>Удалить комнату</h2>
+                    <button onClick={(e) => deleteRooms(data.id)}>
+                      Удалить
+                    </button>
+                  </div>
                 </div>
               </div>
             );

@@ -122,9 +122,9 @@ export default function BasicModal({ id }) {
               />
               <input
                 className={styles.modalInput}
+                placeholder="Количество минут"
                 defaultValue="00"
                 type="text"
-                placeholder="Количество минут"
                 onChange={(e) => setDurationMinuts(+e.target.value)}
               />
               <textarea

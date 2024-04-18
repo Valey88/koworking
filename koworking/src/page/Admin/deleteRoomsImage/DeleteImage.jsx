@@ -3,6 +3,7 @@ import { useGetRoomsQuery } from "../../../redux/dataApi";
 import SideBar from "../../../components/sideBar/SideBar";
 import style from "./DeleteImage.module.css";
 import { useDeletePictureMutation } from "../../../redux/dataApi";
+import { Link } from "react-router-dom";
 
 const DeleteImage = () => {
   const { data } = useGetRoomsQuery();
@@ -13,7 +14,13 @@ const DeleteImage = () => {
   };
   return (
     <div className={style.DeleteImage}>
-      <SideBar />
+      <div>
+        <div className={style.sideNavContainer}>
+          <Link to="/CreateRooms">Создание Команты</Link>
+          <Link to="/Admin">Список комнат</Link>
+          <Link to="/DeleteImage">Удаление изображений</Link>
+        </div>
+      </div>
       <div className={style.delete_image}>
         {data?.map((data) => {
           return (

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Home.module.css";
 import { Link } from "react-router-dom";
-import { useGetRoomsQuery } from "../../redux/dataApi";
+import { useGetOrdersQuery, useGetRoomsQuery } from "../../redux/dataApi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -20,11 +20,12 @@ import "../../components/slider/styles.module.css";
 
 const Home = () => {
   // const []
-  // const { data } = useGetRoomsQuery();
+  
   return (
     <div className={style.Home}>
       <div className={style.CmpOne}>
         <div className={style.contentOne}>
+          
           <div>
             <img src="/public/Frame 1.svg" alt="" />
           </div>

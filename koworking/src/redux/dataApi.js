@@ -28,6 +28,9 @@ export const dataApi = createApi({
           description: body.description,
           price: body.price,
           places: body.places,
+          weekDays: body.weeks,
+          timeStart: body.timeStart,
+          timeEnd: body.timeEnd,
         },
       }),
     }),
@@ -61,6 +64,9 @@ export const dataApi = createApi({
         },
       }),
     }),
+    getOrders: builder.query({
+      query: () => "order/get-all-orders",
+    }),
   }),
 });
 
@@ -72,4 +78,5 @@ export const {
   useGetPicturesNameQuery,
   useDeletePictureMutation,
   usePostOrdersMutation,
+  useGetOrdersQuery,
 } = dataApi;

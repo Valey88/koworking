@@ -1,8 +1,7 @@
 .sideNav {
   width: 25rem;
-  height: 50%;
-  position: fixed;
-  top: 10;
+  height: 35rem;
+
   left: 0;
   overflow-x: hidden;
   background-color: #f59c33;
