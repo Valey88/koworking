@@ -37,7 +37,6 @@ function AddRooms() {
   const handleFileChanges = (id) => {
     const formData = new FormData();
     formData.append("image", file);
-
     axios.post(`http://localhost:3000/room/upload-picture/${id}`, formData, {
       method: "POST",
       headers: { "Content-type": "multipart/form-data" },

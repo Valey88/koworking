@@ -11,6 +11,7 @@ import Admin from "./page/Admin/Admin";
 import Booking from "./page/Booking/Booking";
 import CreateRooms from "./page/Admin/createRooms/CreateRooms";
 import DeleteImage from "./page/Admin/deleteRoomsImage/DeleteImage";
+import Auth from "./page/Admin/Auth/Auth";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Booking" element={<Booking />} />
         <Route path="/CreateRooms" element={<CreateRooms />} />
         <Route path="/DeleteImage" element={<DeleteImage />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
       <Footer />
     </>

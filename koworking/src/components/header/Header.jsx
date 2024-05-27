@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-scroll";
 import "./Header.css";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ export default function Header() {
     <>
       <header className="header">
         <div className="headerLogo">
-          <Link to="/">ОРГМУ</Link>
+          <a href="/">ОРГМУ</a>
         </div>
         <nav
           className={`headerNav ${isOpen ? "active" : ""}`}
@@ -17,16 +17,20 @@ export default function Header() {
         >
           <ul className="headerNavList">
             <li className="headerNavItem">
-              <Link to="/">О нас </Link>
+              <Link to="onas" smooth={true}>
+                О нас{" "}
+              </Link>
             </li>
             <li className="headerNavItem">
-              <Link to="/contacts">Преимущества</Link>
+              <Link to="prem" smooth={true}>
+                Преимущества
+              </Link>
             </li>
             <li className="headerNavItem">
-              <Link to="/Booking">Бронирование </Link>
+              <a href="/Booking">Бронирование</a>
             </li>
             <li className="headerNavItem">
-              <Link to="https://t.me/coworking_orgmu">Контакты</Link>
+              <a href="https://t.me/coworking_orgmu">Контакты</a>
             </li>
           </ul>
         </nav>

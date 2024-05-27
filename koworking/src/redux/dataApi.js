@@ -1,15 +1,32 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+function saveTokenInCookie(token) {
+  const expires = new Date();
+  expires.setDate(expires.getDate() + 7); // Устанавливаем срок действия куки на 7 дней
+  document.cookie = `jwt_token=${token};expires=${expires.toUTCString()};path=/`;
+}
 
+// Функция для получения JWT токена из куки
+function getTokenFromCookie() {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith("jwt_token=")) {
+      return cookie.substring("jwt_token=".length, cookie.length);
+    }
+  }
+  return null;
+}
 export const dataApi = createApi({
   reducerPath: "dataApi/api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
+  tagTypes: ["Rooms", "Pictures"],
   endpoints: (builder) => ({
     getRooms: builder.query({
       query: () => "room/get-all-rooms",
-    }),
-
-    getPictures: builder.query({
-      query: (id) => `room/get-names-picture-by-room-id/${14}`,
+      providesTags: (result) =>
+        result
+          ? [...result.map(({ id }) => ({ type: "Rooms", id })), "Rooms"]
+          : ["Rooms"],
     }),
     getPicturesName: builder.query({
       query: (name) => ({
@@ -33,6 +50,7 @@ export const dataApi = createApi({
           timeEnd: body.timeEnd,
         },
       }),
+      invalidatesTags: ["Rooms"],
     }),
 
     deleteRoom: builder.mutation({
@@ -40,6 +58,7 @@ export const dataApi = createApi({
         url: `room/delete-room/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Rooms"],
     }),
     deletePicture: builder.mutation({
       query: (name) => ({
@@ -66,6 +85,24 @@ export const dataApi = createApi({
     }),
     getOrders: builder.query({
       query: () => "order/get-all-orders",
+    }),
+    login: builder.mutation({
+      query: (credentials) => ({
+        url: "/login",
+        method: "POST",
+        body: credentials,
+      }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          const token = data.token;
+          if (token) {
+            saveTokenInCookie(token);
+          }
+        } catch (error) {
+          console.error("Ошибка авторизации:", error);
+        }
+      },
     }),
   }),
 });

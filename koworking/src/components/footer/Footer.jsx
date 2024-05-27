@@ -15,8 +15,8 @@ const Footer = () => {
         <p>Интересы</p>
       </div> */}
       <div className={style.footerContent}>
-        <h2>Контакты</h2>
-        <Link to="#!">
+        <Link to="https://t.me/coworking_orgmu">
+          <h2>Контакты</h2>
           <img src="/public/Artboard.png" alt="" />
         </Link>
       </div>

@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className={style.Home}>
       <div className={style.CmpOne}>
-        <div className={style.contentOne}>
+        <div className={style.contentOne} id="onas">
           
           <div>
             <img src="/public/Frame 1.svg" alt="" />
@@ -95,7 +95,7 @@ const Home = () => {
         </div>
       </div>
       <div className={style.component3}>
-        <div className={style.content_component5}>
+        <div className={style.content_component5} id="prem">
           <p>Преимущества</p>
           <h2>Выбирай наш комфорт</h2>
           <div className={style.content_components}>
